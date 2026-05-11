@@ -10,7 +10,7 @@ function Events() {
     const fetchFeaturedEvents = async () => {
       try {
         const res = await fetch(
-          "http://localhost:5000/api/events/featured"
+          "http://eventify-ai-e28l.onrender.com/api/events/featured"
         );
 
         const data = await res.json();
@@ -57,7 +57,7 @@ function Events() {
             <div className="event-card" key={index}>
               <div className="event-image">
                 <img
-                  src={`http://localhost:5000${event.image}`}
+                  src={`http://eventify-ai-e28l.onrender.com${event.image}`}
                   alt={event.title}
                 />
               </div>

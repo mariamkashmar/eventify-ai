@@ -12,7 +12,7 @@ export default function AllEvents() {
   
   const fetchEvents = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/events/all");
+      const res = await fetch("https://eventify-ai-e28l.onrender.com/api/events/all");
       const data = await res.json();
 
       if (!data.success) {
@@ -103,7 +103,7 @@ const filteredEvents = allEvents.filter((event) => {
             <div className="all-event-card" key={event._id}>
               <div className="all-event-image">
                 <img
-                  src={`http://localhost:5000${event.image.replaceAll('"', "")}`}
+                  src={`https://eventify-ai-e28l.onrender.com${event.image.replaceAll('"', "")}`}
                   alt={event.title}
                 />
               </div>

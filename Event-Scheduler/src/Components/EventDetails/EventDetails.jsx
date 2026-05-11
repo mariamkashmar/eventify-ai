@@ -19,7 +19,7 @@ const handleInvite = async (e) => {
   try {
     const user = JSON.parse(localStorage.getItem("user"));
 
-    const res = await fetch("http://localhost:5000/api/invites/send", {
+    const res = await fetch("http://eventify-ai-e28l.onrender.com/api/invites/send", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -46,7 +46,7 @@ const handleInvite = async (e) => {
 };
   const fetchEvent = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/events/all");
+      const res = await fetch("http://eventify-ai-e28l.onrender.com/api/events/all");
       const data = await res.json();
 
       if (!data.success) {
@@ -87,7 +87,7 @@ const handleInvite = async (e) => {
       }
 
       const res = await fetch(
-        "http://localhost:5000/api/registrations/register",
+        "http://eventify-ai-e28l.onrender.com/api/registrations/register",
         {
           method: "POST",
           headers: {
@@ -171,7 +171,7 @@ const handleInvite = async (e) => {
         <div className="event-details-card">
           <div className="event-details-image">
             <img
-              src={`http://localhost:5000${event.image}`}
+              src={`http://eventify-ai-e28l.onrender.com${event.image}`}
               alt={event.title}
             />
           </div>

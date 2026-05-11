@@ -50,7 +50,7 @@ export default function Signing() {
     setMessage("");
 
     try {
-      const res = await fetch("http://localhost:5000/api/users/signup", {
+      const res = await fetch("http://eventify-ai-e28l.onrender.com/api/users/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -78,7 +78,7 @@ export default function Signing() {
     setMessage("");
 
     try {
-      const res = await fetch("http://localhost:5000/api/users/signin", {
+      const res = await fetch("http://eventify-ai-e28l.onrender.com/api/users/signin", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -68,7 +68,7 @@ export default function CreateEvent() {
     formData.append("image", eventData.image);
 
     try {
-      const res = await fetch("http://localhost:5000/api/events/create", {
+      const res = await fetch("http://eventify-ai-e28l.onrender.com/api/events/create", {
         method: "POST",
         body: formData,
       });
@@ -104,7 +104,7 @@ export default function CreateEvent() {
     try {
       setAiLoading(true);
 
-      const res = await fetch("http://localhost:5000/api/ai/generate-description", {
+      const res = await fetch("http://eventify-ai-e28l.onrender.com/api/ai/generate-description", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

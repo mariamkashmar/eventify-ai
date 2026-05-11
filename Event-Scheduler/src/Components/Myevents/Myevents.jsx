@@ -31,7 +31,7 @@ export default function Myevents() {
       }
 
       const res = await fetch(
-        `http://localhost:5000/api/events/user/${user._id}`
+        `http://eventify-ai-e28l.onrender.com/api/events/user/${user._id}`
       );
 
       const data = await res.json();
@@ -98,7 +98,7 @@ export default function Myevents() {
       }
 
       const res = await fetch(
-        `http://localhost:5000/api/events/update/${editingEvent._id}`,
+        `http://eventify-ai-e28l.onrender.com/api/events/update/${editingEvent._id}`,
         {
           method: "PUT",
           body: formData,
@@ -129,7 +129,7 @@ export default function Myevents() {
 
     try {
       const res = await fetch(
-        `http://localhost:5000/api/events/delete/${eventId}/${user._id}`,
+        `http://eventify-ai-e28l.onrender.com/api/events/delete/${eventId}/${user._id}`,
         {
           method: "DELETE",
         }
@@ -273,7 +273,7 @@ export default function Myevents() {
                       src={
                         editingEvent.imagePreview
                           ? editingEvent.imagePreview
-                          : `http://localhost:5000${editingEvent.image}`
+                          : `http://eventify-ai-e28l.onrender.com${editingEvent.image}`
                       }
                       alt="Event preview"
                       className="edit-preview-image"
@@ -320,7 +320,7 @@ export default function Myevents() {
               <div className="my-event-card" key={event._id}>
                 <div className="my-event-image">
                   <img
-                    src={`http://localhost:5000${event.image}`}
+                    src={`http://eventify-ai-e28l.onrender.com${event.image}`}
                     alt={event.title}
                   />
                 </div>

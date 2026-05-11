@@ -32,7 +32,7 @@ export default function MyTickets() {
       }
 
       const res = await fetch(
-        `http://localhost:5000/api/registrations/user/${user._id}`
+        `http://eventify-ai-e28l.onrender.com/api/registrations/user/${user._id}`
       );
 
       const data = await res.json();
@@ -84,7 +84,7 @@ export default function MyTickets() {
         if (!confirmDecline) return;
 
         const res = await fetch(
-          `http://localhost:5000/api/registrations/delete/${registrationId}/${user._id}`,
+          `http://eventify-ai-e28l.onrender.com/api/registrations/delete/${registrationId}/${user._id}`,
           {
             method: "DELETE",
           }
@@ -103,7 +103,7 @@ export default function MyTickets() {
       }
 
       const res = await fetch(
-        `http://localhost:5000/api/registrations/status/${registrationId}`,
+        `http://eventify-ai-e28l.onrender.com/api/registrations/status/${registrationId}`,
         {
           method: "PUT",
           headers: {
@@ -172,7 +172,7 @@ export default function MyTickets() {
                   <img
                     src={
                       event.image?.startsWith("/uploads")
-                        ? `http://localhost:5000${event.image}`
+                        ? `http://eventify-ai-e28l.onrender.com${event.image}`
                         : event.image
                     }
                     alt={event.title}
