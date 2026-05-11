@@ -1,0 +1,196 @@
+.help-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #f8f9fc;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #171935;
+}
+
+.help-hero {
+  background: linear-gradient(135deg, #171935, #25284a);
+  padding: 80px 80px 90px;
+  text-align: center;
+  color: white;
+}
+
+.help-badge {
+  display: inline-block;
+  background: rgba(240, 85, 55, 0.15);
+  color: #ffb2a3;
+  border: 1px solid rgba(240, 85, 55, 0.45);
+  padding: 9px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.help-hero h1 {
+  font-size: 46px;
+  margin: 0 0 16px;
+  font-weight: 900;
+  color: #e6e7f0;
+}
+
+.help-hero p {
+  max-width: 720px;
+  margin: 0 auto;
+  font-size: 17px;
+  line-height: 1.7;
+  color: #e6e7f0;
+}
+
+.help-content {
+  max-width: 1180px;
+  margin: -45px auto 0;
+  padding: 0 24px 70px;
+}
+
+.help-card {
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 34px;
+  margin-bottom: 28px;
+  box-shadow: 0 16px 40px rgba(23, 25, 53, 0.08);
+  border: 1px solid #eceef5;
+}
+
+.help-card h2 {
+  font-size: 28px;
+  margin: 0 0 14px;
+  color: #171935;
+}
+
+.help-card p {
+  color: #64687a;
+  font-size: 15.5px;
+  line-height: 1.7;
+}
+
+.contact-card {
+  border-top: 5px solid #f05537;
+}
+
+.contact-info {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.contact-info div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff4f1;
+  color: #171935;
+  padding: 15px 18px;
+  border-radius: 14px;
+  font-weight: 700;
+}
+
+.contact-info svg {
+  color: #f05537;
+  font-size: 18px;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 26px;
+}
+
+.benefit-box {
+  background: #fafbff;
+  border: 1px solid #eceef5;
+  border-radius: 18px;
+  padding: 24px;
+  transition: 0.25s ease;
+}
+
+.benefit-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 30px rgba(23, 25, 53, 0.08);
+}
+
+.benefit-box svg {
+  color: #f05537;
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.benefit-box h3 {
+  font-size: 18px;
+  margin: 0 0 10px;
+  color: #171935;
+}
+
+.benefit-box p {
+  margin: 0;
+  font-size: 14.5px;
+}
+
+.faq-card {
+  margin-bottom: 0;
+}
+
+.faq-item {
+  padding: 20px 0;
+  border-bottom: 1px solid #eceef5;
+}
+
+.faq-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.faq-item h3 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  color: #171935;
+}
+
+.faq-item p {
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .help-hero {
+    padding: 65px 28px 80px;
+  }
+
+  .help-hero h1 {
+    font-size: 36px;
+  }
+
+  .benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .help-hero h1 {
+    font-size: 30px;
+  }
+
+  .help-content {
+    padding: 0 16px 50px;
+  }
+
+  .help-card {
+    padding: 24px;
+  }
+
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-info {
+    flex-direction: column;
+  }
+
+  .contact-info div {
+    width: 100%;
+  }
+}

@@ -1,0 +1,253 @@
+.all-events-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.all-events-section {
+  padding: 46px 80px 80px;
+}
+
+.all-events-header {
+  margin-bottom: 32px;
+}
+
+.all-events-header .section-label {
+  color: #f05537;
+  font-size: 28px;
+  font-weight: 900;
+  margin: 0 0 10px;
+}
+
+.all-events-header h1 {
+  color: #070b2d;
+  font-size: 46px;
+  font-weight: 900;
+  margin: 0 0 12px;
+}
+
+.all-events-header p {
+  color: #4b4f68;
+  font-size: 17px;
+  line-height: 1.6;
+  max-width: 720px;
+  margin: 0;
+}
+
+.all-events-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 26px;
+}
+
+.all-event-card {
+  background: #ffffff;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid #eeeeee;
+  transition: 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  min-height: 720px;
+}
+
+.all-event-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 36px rgba(240, 85, 55, 0.14);
+}
+
+.all-event-image {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.all-event-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.all-event-content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.all-event-status {
+  display: inline-block;
+  width: fit-content;
+  background: #f1e8ff;
+  color: #070b2d;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 800;
+  margin-bottom: 18px;
+}
+
+.all-event-content h3 {
+  color: #070b2d;
+  font-size: 25px;
+  line-height: 1.25;
+  margin: 0 0 28px;
+  font-weight: 900;
+  min-height: 70px;
+}
+
+.all-event-date {
+  color: #f05537;
+  font-size: 17px;
+  font-weight: 900;
+  margin: 0 0 14px;
+}
+
+.all-event-location {
+  color: #363a55;
+  font-size: 16px;
+  font-weight: 800;
+  margin: 0 0 22px;
+}
+
+.all-seats-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.all-seats-row p,
+.all-seats-row span {
+  margin: 0;
+  color: #4b4f68;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.all-seats-line {
+  border: none;
+  border-top: 1px solid #ececec;
+  margin: 0 0 22px;
+}
+
+.all-event-description {
+  color: #4b4f68;
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0 0 28px;
+}
+
+.all-event-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.all-event-footer span {
+  color: #070b2d;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.all-event-footer button {
+  border: none;
+  background: #f05537;
+  color: #ffffff;
+  padding: 13px 21px;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.all-event-footer button:hover {
+  background: #d94326;
+}
+.all-events-message,
+.all-events-error {
+  font-size: 16px;
+  font-weight: 800;
+  margin: 20px 0;
+}
+
+.all-events-message {
+  color: #4b4f68;
+}
+
+.all-events-error {
+  color: #d94326;
+  background: #fff1ed;
+  padding: 14px 16px;
+  border-radius: 14px;
+}
+
+.all-events-empty {
+  background: #fafafa;
+  border: 1px solid #eeeeee;
+  border-radius: 20px;
+  padding: 45px;
+  text-align: center;
+}
+
+.all-events-empty h2 {
+  color: #070b2d;
+  margin: 0 0 10px;
+}
+
+.all-events-empty p {
+  color: #4b4f68;
+  margin: 0;
+}
+
+/* Responsive */
+
+@media (max-width: 1200px) {
+  .all-events-section {
+    padding: 42px 35px 70px;
+  }
+
+  .all-events-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .all-events-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .all-events-header h1 {
+    font-size: 38px;
+  }
+}
+
+@media (max-width: 600px) {
+  .all-events-section {
+    padding: 34px 18px 60px;
+  }
+
+  .all-events-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .all-events-header .section-label {
+    font-size: 24px;
+  }
+
+  .all-events-header h1 {
+    font-size: 32px;
+  }
+
+  .all-event-card {
+    min-height: auto;
+  }
+
+  .all-event-content h3 {
+    font-size: 23px;
+  }
+}

@@ -1,0 +1,250 @@
+.signing-page {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f7f7f9, #ffffff);
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 55px 24px;
+}
+
+.signing-card {
+  width: 100%;
+  max-width: 1180px;
+  min-height: 650px;
+  background: #ffffff;
+  border-radius: 30px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  box-shadow: 0 24px 60px rgba(23, 25, 53, 0.12);
+  border: 1px solid #eeeeee;
+}
+
+.signing-left {
+  background: linear-gradient(145deg, #2f323d, #4a4f5f);
+  color: white;
+  padding: 70px 55px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.signing-label {
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 900;
+  margin: 0 0 22px;
+}
+
+.signing-left h1 {
+  color: #ffffff;
+  font-size: 52px;
+  line-height: 1.1;
+  margin: 0 0 28px;
+  font-weight: 900;
+}
+
+.signing-left p {
+   color: rgba(255, 255, 255, 0.92);
+  font-size: 18px;
+  line-height: 1.8;
+  max-width: 430px;
+  margin: 0;
+}
+
+.signing-info-box {
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 24px;
+  padding: 32px;
+  margin-top: 50px;
+}
+
+.signing-info-box h2 {
+  color: #ffffff;
+  font-size: 32px;
+  margin: 0 0 14px;
+  font-weight: 900;
+}
+
+.signing-info-box p {
+  font-size: 16px;
+  margin-bottom: 24px;
+}
+
+.signing-small-btn {
+ background: #f05537;
+  color: #ffffff;
+  border: none;
+  border-radius: 14px;
+  padding: 14px 28px;
+  font-size: 15px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.signing-right {
+  padding: 60px 58px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.signing-title {
+  color: #10152f;
+  font-size: 42px;
+  font-weight: 900;
+  margin: 0 0 12px;
+}
+
+.signing-subtitle {
+  color: #5f6275;
+  font-size: 17px;
+  line-height: 1.6;
+  margin: 0 0 34px;
+}
+
+.switch-buttons {
+  display: flex;
+  background: #f4f5fa;
+  border-radius: 18px;
+  padding: 7px;
+  margin-bottom: 32px;
+}
+
+.switch-buttons button {
+  width: 50%;
+  border: none;
+  background: transparent;
+  padding: 15px;
+  border-radius: 14px;
+  color: #10152f;
+  font-size: 16px;
+  font-weight: 900;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.switch-buttons button.active {
+  background: #f05537;
+  color: #ffffff;
+ box-shadow: 0 10px 24px rgba(240, 85, 55, 0.22);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 21px;
+}
+
+.input-group label {
+  color: #10152f;
+  font-size: 14px;
+  font-weight: 900;
+  margin-bottom: 9px;
+}
+
+.input-group input {
+  width: 100%;
+  border: 1px solid #dfe2ea;
+  background: #f9fafc;
+  border-radius: 16px;
+  padding: 15px 16px;
+  color: #10152f;
+  font-size: 15px;
+  outline: none;
+  transition: 0.25s ease;
+}
+
+.input-group input:focus {
+  background: #ffffff;
+  border-color: #f05537;
+  box-shadow: 0 0 0 4px rgba(240, 85, 55, 0.11);
+}
+
+.signing-btn {
+  width: 100%;
+  border: none;
+  background: #f05537;
+  color: #ffffff;
+  padding: 16px;
+  border-radius: 16px;
+  font-size: 17px;
+  font-weight: 900;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: 0.25s ease;
+}
+
+.signing-btn:hover {
+  background: #d94429;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(240, 85, 55, 0.24);
+}
+
+.success-message {
+  background: #ecfdf3;
+  color: #157347;
+  padding: 13px 15px;
+  border-radius: 13px;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.error-message {
+  background: #fff1ed;
+  color: #d94326;
+  padding: 13px 15px;
+  border-radius: 13px;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 900px) {
+  .signing-card {
+    grid-template-columns: 1fr;
+  }
+
+  .signing-left {
+    padding: 45px 35px;
+  }
+
+  .signing-left h1 {
+    font-size: 40px;
+  }
+
+  .signing-right {
+    padding: 42px 32px;
+  }
+}
+
+@media (max-width: 560px) {
+  .signing-page {
+    padding: 28px 16px;
+  }
+
+  .signing-card {
+    border-radius: 22px;
+  }
+
+  .signing-left h1 {
+    font-size: 34px;
+  }
+
+  .signing-title {
+    font-size: 32px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
