@@ -1,28 +1,36 @@
-const nodemailer = require("nodemailer");
+const BREVO_API_URL = "https://api.brevo.com/v3/smtp/email";
 
-console.log("EMAIL_HOST:", process.env.EMAIL_HOST);
-console.log("EMAIL_PORT:", process.env.EMAIL_PORT);
-console.log("EMAIL_USER:", process.env.EMAIL_USER);
-console.log("EMAIL_PASS exists:", !!process.env.EMAIL_PASS);
+const sendEmail = async ({ to, subject, html }) => {
+  const res = await fetch(BREVO_API_URL, {
+    method: "POST",
+    headers: {
+      "accept": "application/json",
+      "api-key": process.env.BREVO_API_KEY,
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      sender: {
+        name: "Eventify AI",
+        email: "eventify.reminders@gmail.com",
+      },
+      to: [{ email: to }],
+      subject,
+      htmlContent: html,
+    }),
+  });
 
-const transporter = nodemailer.createTransport({
-  host: process.env.EMAIL_HOST,
-  port: Number(process.env.EMAIL_PORT),
-  secure: false,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-  connectionTimeout: 30000,
-  greetingTimeout: 30000,
-  socketTimeout: 30000,
-});
+  const data = await res.json();
+
+  if (!res.ok) {
+    console.log("Brevo API error:", data);
+    throw new Error(data.message || "Email sending failed");
+  }
+
+  return data;
+};
 
 const sendReminderEmail = async (to, event) => {
-  console.log("Sending reminder email to:", to);
-
-  await transporter.sendMail({
-    from: `"Eventify AI" <eventify.reminders@gmail.com>`,
+  return sendEmail({
     to,
     subject: `Reminder: ${event.title} is coming soon`,
     html: `
@@ -42,10 +50,7 @@ const sendReminderEmail = async (to, event) => {
 };
 
 const sendInvitationEmail = async (to, event, invitedBy) => {
-  console.log("Sending invitation email to:", to);
-
-  await transporter.sendMail({
-    from: `"Eventify AI" <eventify.reminders@gmail.com>`,
+  return sendEmail({
     to,
     subject: `${invitedBy} invited you to ${event.title}`,
     html: `
