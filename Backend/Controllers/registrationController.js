@@ -3,7 +3,7 @@ const {
   getUserRegistrations,
   updateRegistrationStatus,
   deleteRegistration,
-} = require("../Services/registrationService");
+} = require("../Services/RegistrationService");
 
 const Event = require("../Models/eventModel");
 
