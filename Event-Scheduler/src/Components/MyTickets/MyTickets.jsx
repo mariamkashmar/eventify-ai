@@ -32,7 +32,7 @@ export default function MyTickets() {
       }
 
       const res = await fetch(
-        `http://eventify-ai-e28l.onrender.com/api/registrations/user/${user._id}`
+        `https://eventify-ai-e28l.onrender.com/api/registrations/user/${user._id}`
       );
 
       const data = await res.json();
@@ -84,7 +84,7 @@ export default function MyTickets() {
         if (!confirmDecline) return;
 
         const res = await fetch(
-          `http://eventify-ai-e28l.onrender.com/api/registrations/delete/${registrationId}/${user._id}`,
+          `https://eventify-ai-e28l.onrender.com/api/registrations/delete/${registrationId}/${user._id}`,
           {
             method: "DELETE",
           }
@@ -103,7 +103,7 @@ export default function MyTickets() {
       }
 
       const res = await fetch(
-        `http://eventify-ai-e28l.onrender.com/api/registrations/status/${registrationId}`,
+        `https://eventify-ai-e28l.onrender.com/api/registrations/status/${registrationId}`,
         {
           method: "PUT",
           headers: {
@@ -172,7 +172,7 @@ export default function MyTickets() {
                   <img
                     src={
                       event.image?.startsWith("/uploads")
-                        ? `http://eventify-ai-e28l.onrender.com${event.image}`
+                        ? `https://eventify-ai-e28l.onrender.com${event.image}`
                         : event.image
                     }
                     alt={event.title}
