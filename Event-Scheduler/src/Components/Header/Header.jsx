@@ -45,9 +45,9 @@ export default function Header() {
       <nav className="header-nav">
         <Link to="/">Home</Link>
 
-        <Link to="/my-events">My Events</Link>
+        <Link to="/my-events">Edit your Events</Link>
 
-        <Link to="/events">Find Events</Link>
+        <Link to="/events">Explore Events</Link>
 
         <Link to="/create-event">Create Events</Link>
 
