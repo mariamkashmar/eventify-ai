@@ -9,11 +9,8 @@ The project focuses on creating a clean, professional, user-friendly, and respon
 
 # 🌐 Live Demo
 
-### Frontend
+### Eventify
 https://eventify-ai-tan.vercel.app
-
-### Backend API
-https://eventify-ai-e28l.onrender.com
 
 ---
 
@@ -32,7 +29,6 @@ https://eventify-ai-e28l.onrender.com
   - Category
   - Location
   - Description
-  - Price
 - 📱 Fully responsive design
 - 🎟️ Ticket management system
 - 📌 Attendance status tracking:
@@ -70,12 +66,31 @@ Powered by Brevo:
 
 ---
 
+## 📧 Email Notifications
+
+### Invitation Email
+
+![Invitation Email](Event-Scheduler/Screenshots/InvitationEmail.png)
+
+Users can invite friends to events through professional email invitations powered by Brevo.
+
+---
+
+### Reminder Email
+
+![Reminder Email](Event-Scheduler/Screenshots/Reminder.png)
+
+Automatic reminder emails are sent before upcoming events to notify registered users.
+
 ## 🤖 AI Features
 
-The application integrates AI-powered functionality for:
+TThe application includes an AI-inspired smart description generator that automatically creates professional event descriptions based on user input such as:
+- Event title
+- Category
+- Location
+- Date and time
 
-- Automatic event description generation
-- Smart text generation for professional event details
+This feature helps users quickly generate engaging and organized event content during event creation.
 
 ---
 
@@ -127,31 +142,227 @@ Event images are uploaded and permanently hosted using ImageKit CDN.
 
 - ImageKit CDN
 
-### AI Integration
-
-- OpenAI API
-
 ---
 
 # 📂 Project Structure
 
 ```txt
-Eventify-AI
-│
-├── Frontend
-│   ├── src
-│   ├── Components
-│   ├── Pages
-│   ├── CSS Files
-│   └── App.jsx
+EVENT-SCHEDULER
 │
 ├── Backend
+│   │
 │   ├── Config
+│   │   ├── Config.js
+│   │   ├──imagekit.js
+│   │
 │   ├── Controllers
+│   │   ├── eventController.js
+│   │   ├── registrationController.js
+│   │   └── userController.js
+│   │
 │   ├── Models
+│   │   ├── eventModel.js
+│   │   ├── registrationModel.js
+│   │   └── userModel.js
+│   │
 │   ├── Routes
+│   │   ├── aiRoute.js
+│   │   ├── eventRoute.js
+│   │   ├── inviteRoute.js
+│   │   ├── registrationRoute.js
+│   │   └── userRoute.js
+│   │
 │   ├── Services
+│   │   ├── emailService.js
+│   │   ├── eventService.js
+│   │   ├── RegistrationService.js
+│   │   ├── reminderService.js
+│   │   └── userService.js
+│   │
 │   ├── Validators
+│   │   ├── eventValidation.js
+│   │   └── userValidation.js
+│   │
+│   ├──.env
+│   ├──uploads
 │   └── app.js
 │
+├── Event-Scheduler
+│   │
+│   ├── src
+│   │   │
+│   │   ├── Components
+│   │   │   ├── AllEvents
+│   │   │   ├── CreateEvent
+│   │   │   ├── EventCategories
+│   │   │   ├── EventDetails
+│   │   │   ├── Events
+│   │   │   ├── Header
+│   │   │   ├── HelpCenter
+│   │   │   ├── Hero
+│   │   │   ├── Myevents
+│   │   │   ├── MyTickets
+│   │   │   └── Signing
+│   │   │
+│   │   ├── Pages
+│   │   │   ├── AllEventsPage.jsx
+│   │   │   ├── CreateEventPage.jsx
+│   │   │   ├── EventDetailsPage.jsx
+│   │   │   ├── HelpCenterPage.jsx
+│   │   │   ├── HomePage.jsx
+│   │   │   ├── MyeventsPage.jsx
+│   │   │   ├── MyTicketsPage.jsx
+│   │   │   └── SigningPage.jsx
+│   │   ├── App.js
+│   │   └── index.js
+│
+├── package.json
+├── package-lock.json
 └── README.md
+```
+# 🚀 Getting Started
+
+## Clone Repository
+
+```bash
+git clone https://github.com/mariamkashmar/eventify-ai
+```
+
+---
+
+# ⚙️ Backend Setup
+
+Navigate to backend folder:
+
+```bash
+cd Backend
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Create `.env` file:
+
+```env
+Create a `.env` file inside the Backend folder by following the structure provided in the included `.env.example` file.
+
+All required environment variables and configuration examples are already provided there.
+```
+
+Run backend server:
+
+```bash
+node app.js
+```
+
+Backend runs on:
+
+```txt
+http://localhost:5000
+```
+
+---
+
+# 💻 Frontend Setup
+
+Navigate to Event-Scheduler folder:
+
+```bash
+cd Event-Scheduler
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run frontend:
+
+```bash
+npm run dev
+```
+
+Frontend runs on:
+
+```txt
+http://localhost:5173
+```
+
+---
+
+# 📸 Website Pages
+
+The application includes several main sections:
+
+- 🏠 Home Page
+- 🎫 Events Page
+- 📋 Event Details Page
+- ➕ Create Event Page
+- 🎟️ My Tickets Page
+- 🗂️ My Events Page
+- 🔐 Login / Register Pages
+- 📩 Invitation System
+- 🔍 Search System
+
+---
+
+# 📱 Responsive Design
+
+The website is fully responsive and optimized for:
+
+- Desktop
+- Tablet
+- Mobile devices
+
+---
+
+# 🔔 Extra Features
+
+- 📧 Automatic email reminders
+- 📩 Invitation email system
+- 🤖 Smart event description generation
+- 🖼️ Cloud image hosting
+- 📱 Mobile responsive interface
+- 🎨 Professional Eventbrite-inspired UI
+- 🔍 Smart search functionality
+
+---
+
+# 🧠 AI Usage
+
+This project was developed using AI-assisted tools for:
+- UI/UX improvements
+- Code generation assistance
+- Backend integration support
+- Deployment optimization
+- Smart automated text generation features
+
+---
+
+# 💡 Future Improvements
+
+- 💳 Online payment integration
+- 📅 Google Calendar integration
+- 🔔 Real-time notifications
+- 📊 Event analytics dashboard
+- 👥 Social media sharing
+- 🌍 Multi-language support
+
+---
+
+# 👩‍💻 Author
+
+Developed by Mariam Kashmar.
+
+---
+
+# ⭐ Repository
+
+If you like this project, feel free to star the repository.
+
+GitHub Repository:
+https://github.com/mariamkashmar/eventify-ai
