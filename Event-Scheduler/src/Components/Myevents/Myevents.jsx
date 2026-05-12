@@ -91,7 +91,6 @@ export default function Myevents() {
       formData.append("description", editingEvent.description);
       formData.append("price", editingEvent.price);
       formData.append("seats", editingEvent.seats);
-      formData.append("image", editingEvent.image);
 
       if (editingEvent.newImage) {
   formData.append("image", editingEvent.newImage);
@@ -197,7 +196,18 @@ const getImageUrl = (image) => {
                     <option value="Technology">Technology</option>
                     <option value="Workshop">Workshop</option>
                     <option value="Conference">Conference</option>
+                    <option value="Others">Others</option>
                   </select>
+                  {editingEvent.type === "Others" && (
+  <input
+    type="text"
+    name="otherType"
+    placeholder="Enter event type"
+    value={editingEvent.otherType || ""}
+    onChange={handleChange}
+    required
+  />
+)}
                 </div>
 
                 <div className="edit-form-group">
