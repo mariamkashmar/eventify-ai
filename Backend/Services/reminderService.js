@@ -22,7 +22,7 @@ const startReminderService = () => {
 
         if (!user || !event) continue;
 
-        const eventDateTime = new Date(`${event.date}T${event.time}`);
+        const eventDateTime = new Date(`${event.date}T${event.time}:00+03:00`);
         const difference = eventDateTime - now;
         const oneHour = 60 * 60 * 1000;
 
