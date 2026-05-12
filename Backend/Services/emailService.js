@@ -1,32 +1,47 @@
 const BREVO_API_URL = "https://api.brevo.com/v3/smtp/email";
 
 const sendEmail = async ({ to, subject, html }) => {
-  const res = await fetch(BREVO_API_URL, {
-    method: "POST",
-    headers: {
-      "accept": "application/json",
-      "api-key": process.env.BREVO_API_KEY,
-      "content-type": "application/json",
-    },
-    body: JSON.stringify({
-      sender: {
-        name: "Eventify AI",
-        email: "eventify.reminders@gmail.com",
+  try {
+    if (!process.env.BREVO_API_KEY) {
+      throw new Error("BREVO_API_KEY is missing in environment variables");
+    }
+
+    if (!to) {
+      throw new Error("Recipient email is missing");
+    }
+
+    const res = await fetch(BREVO_API_URL, {
+      method: "POST",
+      headers: {
+        accept: "application/json",
+        "api-key": process.env.BREVO_API_KEY,
+        "content-type": "application/json",
       },
-      to: [{ email: to }],
-      subject,
-      htmlContent: html,
-    }),
-  });
+      body: JSON.stringify({
+        sender: {
+          name: "Eventify AI",
+          email: "eventify.reminders@gmail.com",
+        },
+        to: [{ email: to }],
+        subject,
+        htmlContent: html,
+      }),
+    });
 
-  const data = await res.json();
+    const data = await res.json();
 
-  if (!res.ok) {
-    console.log("Brevo API error:", data);
-    throw new Error(data.message || "Email sending failed");
+    console.log("Brevo status:", res.status);
+    console.log("Brevo response:", data);
+
+    if (!res.ok) {
+      throw new Error(data.message || "Email sending failed");
+    }
+
+    return data;
+  } catch (error) {
+    console.error("Email service error:", error.message);
+    throw error;
   }
-
-  return data;
 };
 
 const sendReminderEmail = async (to, event) => {
@@ -61,7 +76,7 @@ const sendInvitationEmail = async (to, event, invitedBy) => {
         <p><strong>Date:</strong> ${event.date}</p>
         <p><strong>Time:</strong> ${event.time}</p>
         <p><strong>Location:</strong> ${event.location}</p>
-        <p>${event.description}</p>
+        <p>${event.description || ""}</p>
         <p style="margin-top: 20px;">Open Eventify AI and register for this event.</p>
         <p style="color:#777;">Eventify AI</p>
       </div>
