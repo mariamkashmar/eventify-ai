@@ -1,4 +1,4 @@
-# 🎉 Eventify AI – Event Scheduler Application
+# ✨ Eventify AI – Event Scheduler Application
 
 A modern AI-powered event scheduling and management web application built using the MERN Stack.  
 Eventify AI allows users to create, manage, discover, and register for events online with AI-generated descriptions, email invitations, reminder notifications, image uploads, and responsive design.
