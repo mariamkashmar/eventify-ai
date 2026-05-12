@@ -13,7 +13,7 @@ const registerForEvent = async (userId, eventId) => {
   const registration = await Registration.create({
     userId,
     eventId,
-    status: "upcoming",
+    status: "attending",
   });
 
   return registration;
