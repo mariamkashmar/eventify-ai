@@ -39,6 +39,17 @@ function Events() {
     hour12: true,
   });
 };
+const getImageUrl = (image) => {
+  if (!image) return "";
+
+  const cleanImage = image.replaceAll('"', "");
+
+  if (cleanImage.startsWith("http")) {
+    return cleanImage;
+  }
+
+  return `https://eventify-ai-e28l.onrender.com${cleanImage}`;
+};
   return (
     <main className="home-page">
       <section className="events-section">
@@ -57,7 +68,7 @@ function Events() {
             <div className="event-card" key={index}>
               <div className="event-image">
                 <img
-                  src={`https://eventify-ai-e28l.onrender.com${event.image}`}
+                 src={getImageUrl(event.image)}
                   alt={event.title}
                 />
               </div>

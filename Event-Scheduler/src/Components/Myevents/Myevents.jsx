@@ -94,8 +94,10 @@ export default function Myevents() {
       formData.append("image", editingEvent.image);
 
       if (editingEvent.newImage) {
-        formData.append("image", editingEvent.newImage);
-      }
+  formData.append("image", editingEvent.newImage);
+} else {
+  formData.append("image", editingEvent.image);
+}
 
       const res = await fetch(
         `https://eventify-ai-e28l.onrender.com/api/events/update/${editingEvent._id}`,
@@ -148,7 +150,17 @@ export default function Myevents() {
       setError("Failed to delete event.");
     }
   };
+const getImageUrl = (image) => {
+  if (!image) return "";
 
+  const cleanImage = image.replaceAll('"', "");
+
+  if (cleanImage.startsWith("http")) {
+    return cleanImage;
+  }
+
+  return `https://eventify-ai-e28l.onrender.com${cleanImage}`;
+};
   return (
     <main className="my-events-page">
       <section className="my-events-section">
@@ -273,7 +285,7 @@ export default function Myevents() {
                       src={
                         editingEvent.imagePreview
                           ? editingEvent.imagePreview
-                          : `https://eventify-ai-e28l.onrender.com${editingEvent.image}`
+                          : getImageUrl(editingEvent.image)
                       }
                       alt="Event preview"
                       className="edit-preview-image"
@@ -320,7 +332,7 @@ export default function Myevents() {
               <div className="my-event-card" key={event._id}>
                 <div className="my-event-image">
                   <img
-                    src={`https://eventify-ai-e28l.onrender.com${event.image}`}
+                    src={getImageUrl(event.image)}
                     alt={event.title}
                   />
                 </div>

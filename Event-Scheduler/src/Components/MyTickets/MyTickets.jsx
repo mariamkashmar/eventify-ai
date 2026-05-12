@@ -136,6 +136,17 @@ export default function MyTickets() {
     if (price.startsWith("$")) return price;
     return `$${price}`;
   };
+  const getImageUrl = (image) => {
+  if (!image) return "";
+
+  const cleanImage = image.replaceAll('"', "");
+
+  if (cleanImage.startsWith("http")) {
+    return cleanImage;
+  }
+
+  return `https://eventify-ai-e28l.onrender.com${cleanImage}`;
+};
 
   return (
     <main className="my-tickets-page">
@@ -165,18 +176,13 @@ export default function MyTickets() {
             if (!event) return null;
 
             const userStatus = getUserStatus(ticket.status);
-
             return (
               <div className="ticket-card" key={ticket._id}>
                 <div className="ticket-image">
-                  <img
-                    src={
-                      event.image?.startsWith("/uploads")
-                        ? `https://eventify-ai-e28l.onrender.com${event.image}`
-                        : event.image
-                    }
-                    alt={event.title}
-                  />
+                 <img
+  src={getImageUrl(event.image)}
+  alt={event.title}
+/>
                 </div>
 
                 <div className="ticket-content">

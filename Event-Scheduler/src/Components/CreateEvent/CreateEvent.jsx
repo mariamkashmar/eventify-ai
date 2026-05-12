@@ -48,6 +48,10 @@ export default function CreateEvent() {
       alert("Please sign in first.");
       return;
     }
+    if (!eventData.image) {
+  alert("Please upload an event image.");
+  return;
+}
 
     const formData = new FormData();
 

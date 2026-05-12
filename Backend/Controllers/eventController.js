@@ -1,4 +1,5 @@
 const Event = require("../Models/eventModel");
+const imagekit = require("../Config/imagekit");
 const {
   createEvent,
   getAllEvents,
@@ -32,11 +33,22 @@ const createEventController = async (req, res) => {
     console.log("BODY:", req.body);
     console.log("FILE:", req.file);
 
-    const eventData = {
-      ...req.body,
-      image: req.file ? `/uploads/${req.file.filename}` : "",
-    };
+let imageUrl = "";
 
+if (req.file) {
+  const uploadedImage = await imagekit.upload({
+    file: req.file.buffer.toString("base64"),
+    fileName: `${Date.now()}-${req.file.originalname}`,
+    folder: "/eventify-events",
+  });
+
+  imageUrl = uploadedImage.url;
+}
+
+const eventData = {
+  ...req.body,
+  image: imageUrl,
+};
     const validationError = validateEvent(eventData);
 
     if (validationError) {
@@ -99,11 +111,22 @@ const updateEventController = async (req, res) => {
   try {
     const { eventId } = req.params;
     const { creatorId } = req.body;
+let imageUrl = req.body.image;
 
-    const eventData = {
-      ...req.body,
-      image: req.file ? `/uploads/${req.file.filename}` : req.body.image,
-    };
+if (req.file) {
+  const uploadedImage = await imagekit.upload({
+    file: req.file.buffer.toString("base64"),
+    fileName: `${Date.now()}-${req.file.originalname}`,
+    folder: "/eventify-events",
+  });
+
+  imageUrl = uploadedImage.url;
+}
+
+const eventData = {
+  ...req.body,
+  image: imageUrl,
+};
 
     const updatedEvent = await updateEvent(eventId, creatorId, eventData);
 

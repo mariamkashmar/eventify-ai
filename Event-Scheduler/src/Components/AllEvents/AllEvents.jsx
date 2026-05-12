@@ -75,6 +75,17 @@ const filteredEvents = allEvents.filter((event) => {
     normalize(event.price)?.includes(query)
   );
 });
+const getImageUrl = (image) => {
+  if (!image) return "";
+
+  const cleanImage = image.replaceAll('"', "");
+
+  if (cleanImage.startsWith("http")) {
+    return cleanImage;
+  }
+
+  return `https://eventify-ai-e28l.onrender.com${cleanImage}`;
+};
   return (
     <main className="all-events-page">
       <section className="all-events-section">
@@ -103,7 +114,7 @@ const filteredEvents = allEvents.filter((event) => {
             <div className="all-event-card" key={event._id}>
               <div className="all-event-image">
                 <img
-                  src={`https://eventify-ai-e28l.onrender.com${event.image.replaceAll('"', "")}`}
+                  src={getImageUrl(event.image)}
                   alt={event.title}
                 />
               </div>

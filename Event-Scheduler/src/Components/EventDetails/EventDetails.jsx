@@ -152,7 +152,17 @@ const handleInvite = async (e) => {
     hour12: true,
   });
 };
+const getImageUrl = (image) => {
+  if (!image) return "";
 
+  const cleanImage = image.replaceAll('"', "");
+
+  if (cleanImage.startsWith("http")) {
+    return cleanImage;
+  }
+
+  return `https://eventify-ai-e28l.onrender.com${cleanImage}`;
+};
   return (
     <main className="event-details-page">
       <section className="event-details-section">
@@ -171,7 +181,7 @@ const handleInvite = async (e) => {
         <div className="event-details-card">
           <div className="event-details-image">
             <img
-              src={`https://eventify-ai-e28l.onrender.com${event.image}`}
+              src={getImageUrl(event.image)}
               alt={event.title}
             />
           </div>
