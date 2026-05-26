@@ -45,7 +45,7 @@ export default function HelpCenter() {
         </div>
 
         <div className="help-card">
-          <h2>How You Benefit From Eventify AI</h2>
+          <h2>How You Benefit From Eventify AI Events Scheduler </h2>
 
           <div className="benefits-grid">
             <div className="benefit-box">
