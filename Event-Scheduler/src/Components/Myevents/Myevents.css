@@ -2,14 +2,12 @@
   width: 100%;
   min-height: 100vh;
   background: #ffffff;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
 }
 
 .my-events-section {
   padding: 56px 80px 80px;
 }
-
-/* Header */
 
 .my-events-header {
   margin-bottom: 58px;
@@ -38,8 +36,6 @@
   max-width: 850px;
 }
 
-/* Messages */
-
 .my-events-success,
 .my-events-error {
   padding: 14px 16px;
@@ -57,8 +53,6 @@
   background: #fff1ed;
   color: #d94326;
 }
-
-/* Edit Form */
 
 .edit-event-title {
   color: #070b2d;
@@ -107,6 +101,7 @@
   background: #fafafa;
   outline: none;
   transition: 0.25s ease;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
 }
 
 .edit-form-group select {
@@ -129,8 +124,6 @@
   min-height: 170px;
   resize: vertical;
 }
-
-/* Upload */
 
 .edit-upload-box {
   background: #f05537;
@@ -161,8 +154,6 @@
   border: 1px solid #ececec;
 }
 
-/* Edit Buttons */
-
 .edit-form-actions {
   display: flex;
   gap: 16px;
@@ -178,6 +169,7 @@
   font-weight: 900;
   cursor: pointer;
   transition: 0.25s ease;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
 }
 
 .save-btn {
@@ -198,8 +190,6 @@
   background: #e8e8eb;
 }
 
-/* Empty State */
-
 .empty-events {
   background: #fafafa;
   border: 1px solid #eeeeee;
@@ -218,8 +208,6 @@
   margin: 0;
 }
 
-/* Event Cards */
-
 .my-events-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -234,7 +222,6 @@
   transition: 0.25s ease;
   display: flex;
   flex-direction: column;
-  min-height: 720px;
 }
 
 .my-event-card:hover {
@@ -353,6 +340,7 @@
   font-weight: 900;
   cursor: pointer;
   transition: 0.25s ease;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
 }
 
 .edit-btn {
@@ -373,8 +361,6 @@
   background: #d94326;
   color: #ffffff;
 }
-
-/* Responsive */
 
 @media (max-width: 1200px) {
   .my-events-section {
@@ -407,10 +393,6 @@
 
   .my-events-grid {
     grid-template-columns: 1fr;
-  }
-
-  .my-event-card {
-    min-height: auto;
   }
 
   .edit-form-actions {

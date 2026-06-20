@@ -1,35 +1,19 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Myevents.css";
+import { formatTime, getImageUrl } from "../../utils";
 
 export default function Myevents() {
+  const navigate = useNavigate();
   const [events, setEvents] = useState([]);
   const [editingEvent, setEditingEvent] = useState(null);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
-  const formatTime = (time) => {
-  if (!time) return "";
-
-  const [hour, minute] = time.split(":");
-
-  const date = new Date();
-  date.setHours(hour, minute);
-
-  return date.toLocaleTimeString("en-US", {
-    hour: "numeric",
-    minute: "2-digit",
-    hour12: true,
-  });
-};
 
   const user = JSON.parse(localStorage.getItem("user"));
 
   const fetchMyEvents = async () => {
     try {
-      if (!user?._id) {
-        setError("Please sign in first.");
-        return;
-      }
-
       const res = await fetch(
         `https://eventify-ai-e28l.onrender.com/api/events/user/${user._id}`
       );
@@ -48,6 +32,10 @@ export default function Myevents() {
   };
 
   useEffect(() => {
+    if (!user?._id) {
+      navigate("/signing");
+      return;
+    }
     fetchMyEvents();
   }, []);
 
@@ -83,7 +71,10 @@ export default function Myevents() {
       const formData = new FormData();
 
       formData.append("creatorId", user._id);
-      formData.append("type", editingEvent.type);
+      formData.append(
+        "type",
+        editingEvent.type === "Others" ? editingEvent.otherType : editingEvent.type
+      );
       formData.append("title", editingEvent.title);
       formData.append("date", editingEvent.date);
       formData.append("time", editingEvent.time);
@@ -93,10 +84,10 @@ export default function Myevents() {
       formData.append("seats", editingEvent.seats);
 
       if (editingEvent.newImage) {
-  formData.append("image", editingEvent.newImage);
-} else {
-  formData.append("image", editingEvent.image);
-}
+        formData.append("image", editingEvent.newImage);
+      } else {
+        formData.append("image", editingEvent.image);
+      }
 
       const res = await fetch(
         `https://eventify-ai-e28l.onrender.com/api/events/update/${editingEvent._id}`,
@@ -149,17 +140,7 @@ export default function Myevents() {
       setError("Failed to delete event.");
     }
   };
-const getImageUrl = (image) => {
-  if (!image) return "";
 
-  const cleanImage = image.replaceAll('"', "");
-
-  if (cleanImage.startsWith("http")) {
-    return cleanImage;
-  }
-
-  return `https://eventify-ai-e28l.onrender.com${cleanImage}`;
-};
   return (
     <main className="my-events-page">
       <section className="my-events-section">
@@ -199,15 +180,15 @@ const getImageUrl = (image) => {
                     <option value="Others">Others</option>
                   </select>
                   {editingEvent.type === "Others" && (
-  <input
-    type="text"
-    name="otherType"
-    placeholder="Enter event type"
-    value={editingEvent.otherType || ""}
-    onChange={handleChange}
-    required
-  />
-)}
+                    <input
+                      type="text"
+                      name="otherType"
+                      placeholder="Enter event type"
+                      value={editingEvent.otherType || ""}
+                      onChange={handleChange}
+                      required
+                    />
+                  )}
                 </div>
 
                 <div className="edit-form-group">
@@ -341,10 +322,7 @@ const getImageUrl = (image) => {
             {events.map((event) => (
               <div className="my-event-card" key={event._id}>
                 <div className="my-event-image">
-                  <img
-                    src={getImageUrl(event.image)}
-                    alt={event.title}
-                  />
+                  <img src={getImageUrl(event.image)} alt={event.title} />
                 </div>
 
                 <div className="my-event-content">
@@ -372,8 +350,8 @@ const getImageUrl = (image) => {
                       {event.price?.toLowerCase() === "free"
                         ? "Free"
                         : event.price?.startsWith("$")
-                        ? event.price
-                        : `$${event.price}`}
+                          ? event.price
+                          : `$${event.price}`}
                     </strong>
 
                     <div className="my-event-actions">

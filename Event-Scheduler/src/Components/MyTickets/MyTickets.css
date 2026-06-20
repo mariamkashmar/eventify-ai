@@ -2,7 +2,7 @@
   width: 100%;
   min-height: 100vh;
   background: #ffffff;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
 }
 
 .my-tickets-section {
@@ -93,7 +93,6 @@
   transition: 0.25s ease;
   display: flex;
   flex-direction: column;
-  min-height: 820px;
 }
 
 .ticket-card:hover {
@@ -263,6 +262,7 @@
   font-weight: 800;
   outline: none;
   cursor: pointer;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
 }
 
 .ticket-footer select:focus {
@@ -286,11 +286,7 @@
   }
 
   .my-tickets-header h1 {
-    color: #070b2d;
-    font-size: 46px;
-    font-weight: 900;
-    margin: 0 0 18px;
-    line-height: 1.2;
+    font-size: 38px;
   }
 }
 
@@ -309,10 +305,6 @@
 
   .my-tickets-header h1 {
     font-size: 32px;
-  }
-
-  .ticket-card {
-    min-height: 820px;
   }
 
   .ticket-footer {

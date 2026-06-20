@@ -1,36 +1,19 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./MyTickets.css";
+import { formatTime, getImageUrl, formatPrice } from "../../utils";
 
 export default function MyTickets() {
+  const navigate = useNavigate();
   const [tickets, setTickets] = useState([]);
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
 
-  const formatTime = (time) => {
-  if (!time) return "";
-
-  const [hour, minute] = time.split(":");
-  const date = new Date();
-  date.setHours(hour, minute);
-
-  return date.toLocaleTimeString("en-US", {
-    hour: "numeric",
-    minute: "2-digit",
-    hour12: true,
-  });
-};
-
   const user = JSON.parse(localStorage.getItem("user"));
 
   const fetchTickets = async () => {
     try {
-      if (!user?._id) {
-        setError("Please sign in first.");
-        setLoading(false);
-        return;
-      }
-
       const res = await fetch(
         `https://eventify-ai-e28l.onrender.com/api/registrations/user/${user._id}`
       );
@@ -51,6 +34,10 @@ export default function MyTickets() {
   };
 
   useEffect(() => {
+    if (!user?._id) {
+      navigate("/signing");
+      return;
+    }
     fetchTickets();
   }, []);
 
@@ -67,7 +54,6 @@ export default function MyTickets() {
   const getEventTimeStatus = (date, time) => {
     const eventDateTime = new Date(`${date}T${time}`);
     const now = new Date();
-
     return eventDateTime > now ? "Upcoming" : "Ended";
   };
 
@@ -130,24 +116,6 @@ export default function MyTickets() {
     }
   };
 
-  const formatPrice = (price) => {
-    if (!price) return "Free";
-    if (price.toLowerCase() === "free") return "Free";
-    if (price.startsWith("$")) return price;
-    return `$${price}`;
-  };
-  const getImageUrl = (image) => {
-  if (!image) return "";
-
-  const cleanImage = image.replaceAll('"', "");
-
-  if (cleanImage.startsWith("http")) {
-    return cleanImage;
-  }
-
-  return `https://eventify-ai-e28l.onrender.com${cleanImage}`;
-};
-
   return (
     <main className="my-tickets-page">
       <section className="my-tickets-section">
@@ -179,10 +147,7 @@ export default function MyTickets() {
             return (
               <div className="ticket-card" key={ticket._id}>
                 <div className="ticket-image">
-                 <img
-  src={getImageUrl(event.image)}
-  alt={event.title}
-/>
+                  <img src={getImageUrl(event.image)} alt={event.title} />
                 </div>
 
                 <div className="ticket-content">

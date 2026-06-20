@@ -2,7 +2,7 @@
   width: 100%;
   min-height: 100vh;
   background: #ffffff;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
 }
 
 .event-details-section {
@@ -129,23 +129,6 @@
   margin: 0;
 }
 
-.event-features {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  margin-bottom: 34px;
-}
-
-.feature-item {
-  background: #fff4ef;
-  color: #070b2d;
-  border-radius: 16px;
-  padding: 18px;
-  font-size: 15px;
-  font-weight: 700;
-  line-height: 1.5;
-}
-
 .register-event-btn {
   width: fit-content;
   border: none;
@@ -165,48 +148,25 @@
   box-shadow: 0 14px 28px rgba(240, 85, 55, 0.24);
 }
 
-@media (max-width: 1100px) {
-  .event-details-card {
-    grid-template-columns: 1fr;
-  }
-
-  .event-details-image {
-    height: 480px;
-  }
+.signin-prompt {
+  background: #fff4ef;
+  border: 1px solid #ffd4c2;
+  border-radius: 16px;
+  padding: 22px 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
-@media (max-width: 768px) {
-  .event-details-section {
-    padding: 38px 24px 60px;
-  }
-
-  .event-details-content h1 {
-    font-size: 40px;
-  }
-
-  .event-info-grid,
-  .event-features {
-    grid-template-columns: 1fr;
-  }
+.signin-prompt > p {
+  color: #8a3a1e;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  flex: 1;
 }
 
-@media (max-width: 480px) {
-  .event-details-section {
-    padding: 30px 16px 50px;
-  }
-
-  .event-details-content h1 {
-    font-size: 34px;
-  }
-
-  .event-details-image {
-    height: 340px;
-  }
-
-  .register-event-btn {
-    width: 100%;
-  }
-}
 .invite-box {
   margin-top: 28px;
   padding: 24px;
@@ -230,6 +190,14 @@
   padding: 13px 14px;
   font-size: 15px;
   margin-bottom: 14px;
+  outline: none;
+  transition: 0.25s ease;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+}
+
+.invite-box input:focus {
+  border-color: #f05537;
+  box-shadow: 0 0 0 4px rgba(240, 85, 55, 0.11);
 }
 
 .invite-box button {
@@ -240,6 +208,12 @@
   padding: 12px 18px;
   font-weight: 900;
   cursor: pointer;
+  transition: 0.25s ease;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+}
+
+.invite-box button:hover {
+  background: #d94326;
 }
 
 .invite-box p {
@@ -257,4 +231,51 @@
 .invite-error {
   background: #fff1ed;
   color: #d94326;
+}
+
+@media (max-width: 1100px) {
+  .event-details-card {
+    grid-template-columns: 1fr;
+  }
+
+  .event-details-image {
+    height: 480px;
+  }
+}
+
+@media (max-width: 768px) {
+  .event-details-section {
+    padding: 38px 24px 60px;
+  }
+
+  .event-details-content h1 {
+    font-size: 40px;
+  }
+
+  .event-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .signin-prompt {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .event-details-section {
+    padding: 30px 16px 50px;
+  }
+
+  .event-details-content h1 {
+    font-size: 34px;
+  }
+
+  .event-details-image {
+    height: 340px;
+  }
+
+  .register-event-btn {
+    width: 100%;
+  }
 }

@@ -2,7 +2,7 @@
   width: 100%;
   min-height: 100vh;
   background: #ffffff;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
 }
 
 .all-events-section {
@@ -49,7 +49,6 @@
   transition: 0.25s ease;
   display: flex;
   flex-direction: column;
-  min-height: 720px;
 }
 
 .all-event-card:hover {
@@ -163,11 +162,13 @@
   font-weight: 800;
   cursor: pointer;
   transition: 0.25s ease;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
 }
 
 .all-event-footer button:hover {
   background: #d94326;
 }
+
 .all-events-message,
 .all-events-error {
   font-size: 16px;
@@ -204,8 +205,6 @@
   margin: 0;
 }
 
-/* Responsive */
-
 @media (max-width: 1200px) {
   .all-events-section {
     padding: 42px 35px 70px;
@@ -241,10 +240,6 @@
 
   .all-events-header h1 {
     font-size: 32px;
-  }
-
-  .all-event-card {
-    min-height: auto;
   }
 
   .all-event-content h3 {

@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./Events.css";
 import { Link } from "react-router-dom";
-
-
+import { formatTime, getImageUrl, formatPrice } from "../../utils";
 
 function Events() {
   const [events, setEvents] = useState([]);
+
   useEffect(() => {
     const fetchFeaturedEvents = async () => {
       try {
@@ -25,31 +25,7 @@ function Events() {
 
     fetchFeaturedEvents();
   }, []);
-  const formatTime = (time) => {
-  if (!time) return "";
 
-  const [hour, minute] = time.split(":");
-
-  const date = new Date();
-  date.setHours(hour, minute);
-
-  return date.toLocaleTimeString("en-US", {
-    hour: "numeric",
-    minute: "2-digit",
-    hour12: true,
-  });
-};
-const getImageUrl = (image) => {
-  if (!image) return "";
-
-  const cleanImage = image.replaceAll('"', "");
-
-  if (cleanImage.startsWith("http")) {
-    return cleanImage;
-  }
-
-  return `https://eventify-ai-e28l.onrender.com${cleanImage}`;
-};
   return (
     <main className="home-page">
       <section className="events-section">
@@ -58,19 +34,16 @@ const getImageUrl = (image) => {
             <p className="section-label">Explore Latest Events</p>
             <h2>Events you may like</h2>
           </div>
-          <Link to='/events'>
+          <Link to="/events">
             <button className="view-all-btn">View all events</button>
           </Link>
         </div>
 
         <div className="events-grid">
-          {events.map((event, index) => (
-            <div className="event-card" key={index}>
+          {events.map((event) => (
+            <div className="event-card" key={event._id}>
               <div className="event-image">
-                <img
-                 src={getImageUrl(event.image)}
-                  alt={event.title}
-                />
+                <img src={getImageUrl(event.image)} alt={event.title} />
               </div>
 
               <div className="event-content">
@@ -79,8 +52,8 @@ const getImageUrl = (image) => {
                 <h3>{event.title}</h3>
 
                 <p className="event-date">
-  {event.date} • {formatTime(event.time)}
-</p>
+                  {event.date} • {formatTime(event.time)}
+                </p>
                 <p className="event-location">{event.location}</p>
                 <div className="seats-row">
                   <p>Available seats:</p>
@@ -90,11 +63,7 @@ const getImageUrl = (image) => {
                 <p className="event-description">{event.description}</p>
 
                 <div className="event-footer">
-                  <span className="event-price">
-                    {event.price?.toLowerCase() === "free"
-                      ? "Free"
-                      : `$${event.price}`}
-                  </span>
+                  <span className="event-price">{formatPrice(event.price)}</span>
                   <Link
                     to={`/event/${event.title
                       .toLowerCase()

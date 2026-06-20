@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import "./AllEvents.css";
+import { formatTime, getImageUrl, formatPrice } from "../../utils";
 
 export default function AllEvents() {
   const [searchParams] = useSearchParams();
@@ -9,7 +10,6 @@ export default function AllEvents() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  
   const fetchEvents = async () => {
     try {
       const res = await fetch("https://eventify-ai-e28l.onrender.com/api/events/all");
@@ -32,67 +32,25 @@ export default function AllEvents() {
     fetchEvents();
   }, []);
 
-  const formatPrice = (price) => {
-    if (!price) return "Free";
+  const normalize = (text) => text?.toLowerCase().trim() || "";
 
-    if (price.toLowerCase() === "free") return "Free";
+  const filteredEvents = allEvents.filter((event) => {
+    const query = normalize(searchQuery);
 
-    if (price.startsWith("$")) return price;
-
-    return `$${price}`;
-  };
-  const formatTime = (time) => {
-  if (!time) return "";
-
-  const [hour, minute] = time.split(":");
-
-  const date = new Date();
-  date.setHours(hour, minute);
-
-  return date.toLocaleTimeString("en-US", {
-    hour: "numeric",
-    minute: "2-digit",
-    hour12: true,
+    return (
+      normalize(event.title).includes(query) ||
+      normalize(event.type).includes(query) ||
+      normalize(event.location).includes(query) ||
+      normalize(event.description).includes(query) ||
+      normalize(event.price).includes(query)
+    );
   });
-};
 
-const normalize = (text) => {
-  return text
-    ?.toLowerCase()
-    .replace(/&/g, "and")
-    .replace(/s\b/g, "")
-    .trim();
-};
-
-const filteredEvents = allEvents.filter((event) => {
-  const query = normalize(searchQuery);
-
-  return (
-    normalize(event.title)?.includes(query) ||
-    normalize(event.type)?.includes(query) ||
-    normalize(event.location)?.includes(query) ||
-    normalize(event.description)?.includes(query) ||
-    normalize(event.price)?.includes(query)
-  );
-});
-const getImageUrl = (image) => {
-  if (!image) return "";
-
-  const cleanImage = image.replaceAll('"', "");
-
-  if (cleanImage.startsWith("http")) {
-    return cleanImage;
-  }
-
-  return `https://eventify-ai-e28l.onrender.com${cleanImage}`;
-};
   return (
     <main className="all-events-page">
       <section className="all-events-section">
         <div className="all-events-header">
           <p className="section-label">Events</p>
-          <p></p>
-          <p></p>
           <p>
             Discover all available events, including the latest events created
             by users.
@@ -113,10 +71,7 @@ const getImageUrl = (image) => {
           {filteredEvents.map((event) => (
             <div className="all-event-card" key={event._id}>
               <div className="all-event-image">
-                <img
-                  src={getImageUrl(event.image)}
-                  alt={event.title}
-                />
+                <img src={getImageUrl(event.image)} alt={event.title} />
               </div>
 
               <div className="all-event-content">
@@ -137,9 +92,7 @@ const getImageUrl = (image) => {
 
                 <hr className="all-seats-line" />
 
-                <p className="all-event-description">
-                  {event.description}
-                </p>
+                <p className="all-event-description">{event.description}</p>
 
                 <div className="all-event-footer">
                   <span>{formatPrice(event.price)}</span>

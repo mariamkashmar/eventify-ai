@@ -68,7 +68,6 @@ export default function CreateEvent() {
     formData.append("price", eventData.price);
     formData.append("seats", eventData.seats);
 
-    // IMPORTANT
     formData.append("image", eventData.image);
 
     try {
